@@ -109,8 +109,12 @@ def predictions(testList, user_dict):
         # i += 1
         # if i >= 5:
         #     exit(1)
-    print 'Average accuracy:', accuracy / len(testList)
-    print 'Average accuracy by volume:', accuracy_vol / len(testList)
+
+    avg_precision = accuracy / len(testList)
+    avg_recall = accuracy_vol / len(testList)
+    print 'Average Precision:', avg_precision
+    print 'Average Recall:', avg_recall
+    print 'F1 score:', 2.0*avg_precision*avg_recall / (avg_precision + avg_recall)
 
 
 order_products_prior = pd.read_csv('Data/order_products__skimmed_train.csv').loc[:, ['order_id', 'product_id']]
